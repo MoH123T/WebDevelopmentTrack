@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<!--General Information :-
+
+1-div is used to create a division or a section in the HTML document and
+ group a bunch of elements together and can help organize the content 
+ and apply css styles to them together 
+
+2- the name attribute gives an element a name/identifier that has meaning to the browser or the element's
+ specific HTML behavior ,,, Can be used (1) forms to identify submitted data
+ (2) Radio buttons — groups options ,Checkboxes - because they can be grouped together 
+ (3) can give frames names to link them with links with the use of target
+
+3- The `id` attribute gives an element a unique identifier within an HTML page. 
+ It is mainly used to identify and target a specific element. Can be used in 
+ (1) CSS to style a specific element using `#id`, (2) JavaScript to find and manipulate a specific element,
+ (3) forms to connect a `<label>` with an input using the `for` attribute, and
+ (4) links to jump to a specific section of a page using `href="#id"`.-->
+
+
+<html lang="en">
+<head>
+    <title>Testing Local Host</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../images/Roblox_don_25.png">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <!-- Content Security Policy (CSP) declaration
+    It tells the browser what resources your webpage is allowed to load or execute -->
+    <!--Can couse issues if not configured properly 
+    if error happens checks this-->
+    <!--self : my website , data: is data URLs(different websites)
+    or can be used to allow specific domains like youtube and google api here-->
+    <meta http-equiv="content-security-policy" content="default-src 'self'; script-src 'self' 
+    https://apis.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; 
+    connect-src 'self'; frame-src 'self' https://www.youtube.com;">
+    <!-- <meta http-equiv="refresh" content="10"> hidden refresh -->
+    <!-- refreshes the page every 10 seconds -->
+    <meta name="viewport" content=" width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is my personal website.">
+    <meta name="keywords" content="personal">
+    <style type="text/css">
+    /* CSS styles can be added here */</style>
+    <script src="script.js" defer></script>
+    <!-- script.js is a JavaScript file that contains the code for the webpage
+     The defer attribute tells the browser to load the script after the HTML has been parsed -->
+
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to My Personal Website
+                    <a id="toptest">
+        </h1>
+    </header>
+    <main>
+        <!-- general header-->
+        <p>This is a sample personal website created for testing purposes.</p>
+        <br>
+        <img src="../images/Top9RLB.jpg" alt="Sample Image">
+        <br>
+        <button id="testButton"type="submit">Click Me!</button>
+        <br>
+        <a href="https://w3schools.com" target="_blank"><strong><i>Visit W3Schools to learn web development!</i></strong></a>
+        <br>
+    <!--Iframe Section-->
+    <div id="iframe-section">
+        <h2>Iframe:</h2>
+        <iframe width="560" height="315"  src="https://www.youtube.com/embed/6RKL-j1k4Dc" 
+        title="YouTube video player" frameborder="250" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen ></iframe>
+        <br><br>
+        <iframe src="https://www.youtube.com/embed/6RKL-j1k4Dc"></iframe>
+        <iframe src="../index.php" width="560" height="315" allowfullscreen></iframe>
+    </div>
+
+    <!--Lists Section-->
+    <div id="list-section">
+        <h2>Lists:</h2>
+        <h3>Unordered List:</h3>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <h3>Ordered List:</h3>
+        <ol>
+            <li>First Item</li>
+            <li>Second Item</li>
+            <li>Third Item</li>
+        </ol>
+        <br>
+        <hr>
+    </div>
+        <br>
+        <hr>
+    <!--Form Section-->
+    <div id="form-section"> 
+     <h2>Form:</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+            <textarea id="message" name="message" rows="4" cols="50" placeholder="Enter your message here..."></textarea><br><br>
+
+            <label for="option1">Blue</label>            
+            <input type="radio" id="option1" name="options" value="option1"><br>
+            <input type="radio" id="option2" name="options" value="option2">
+            <label for="option2">Red</label><br>
+
+            <input type="checkbox" id="checkbox1" name="checkbox1" value="checkbox1">
+            <label for="checkbox1">I agree to the terms and conditions</label><br>
+            <input type="checkbox" id="checkbox2" name="checkbox2" value="checkbox2">
+            <label for="checkbox2">I agree to receive email updates</label><br><br>
+
+            <select id="dropdown-continent" name="dropdown-continent"required>
+<!--value= "" → its submitted value is empty
+disabled → the user cannot select it as a valid choice after choosing another option
+selected → it appears initially-->
+                <option value="" disabled selected>Select your continent</option>
+                <option value="option1">Africa</option>
+                <option value="option2">Asia</option>
+                <option value="option3">Europe</option>
+                <option value="option4">North America</option>
+                <option value="option5">South America</option>
+            </select><br><br>
+
+            <input type="submit" value="Submit">
+
+        </form>
+    </div>
+        <br>
+        <hr>
+        
+        <!--Table Section-->
+        <div id="Table-section"> 
+          <h2>Table:</h2>
+           <table border ="1" style="width:50%">
+             <tr><th>Name</th><th>Email</th><th>Message</th></tr>
+             <tr><td>John Doe</td><td>john@example.com</td><td>Hello, this is a test message.</td></tr>
+             <tr><td>Jane Smith</td><td>jane@example.com</td><td>Hi there! This is another test message.</td></tr>
+             <tr><td>Bob Johnson</td><td>bob@example.com</td><td>Hey! Just testing the form.</td></tr>
+           
+           </table>
+        </div>
+         <br><br>
+         <!-- HTML entities are special characters that are used in HTML to represent reserved
+         characters or characters that cannot be easily typed on a keyboard. -->
+          <div id="html-entities"> 
+          <h2>HTML Entities:</h2>
+          1 &gt 0 <br>
+          5 &lt 10 <br>
+          &lt; &gt; &amp; &quot; &apos; &copy; &reg; &euro; &pound; &yen; &cent;
+          </div>
+    </main>
+
+</body>
+    <footer>
+        <hr> 
+        <a href="#toptest">Back to Top</a><br>
+        <a href="index.html">Home</a> |
+        <a href="HtmlProjCourse.html">Course Project</a>
+        <p>&copy; 2026 Personal Website</p>
+    </footer>
+</html>

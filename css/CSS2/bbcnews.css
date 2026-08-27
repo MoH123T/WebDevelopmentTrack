@@ -1,0 +1,396 @@
+body {
+margin: 0; /* There is a default margin for all css elements so
+we can manually remove it by setting all body elements margin to 0 */
+}
+
+#topbar {
+background-color:#7A0000;
+width:100%;
+height:40px;
+overflow-x:auto; /*if the screen is too narrow for all the menu items,
+this lets the bar scroll sideways instead of squashing everything*/
+white-space:nowrap; /*stops the floated items from wrapping onto a new line*/
+}
+
+.fixedwidth {
+width:100%; /*fills the available space...*/
+max-width:1000px; /*...but never grows past 1000px on large screens*/
+box-sizing:border-box; /*keeps any padding inside that max-width instead of adding to it*/
+margin: 0 auto;
+
+/* 0: top&bottom ,auto: left right
+auto: browser takes space available and splits it automatically */
+}
+
+/*
+Information:- 
+Responsive CSS = writing CSS so a website automatically
+adapts to different screen sizes—phones, tablets, laptops, and large monitors.
+
+You'll commonly use:
+
+@media queries
+%, vw, vh, rem instead of fixed sizes
+Flexbox
+CSS Grid
+Flexible images (max-width: 100%)
+Using bootstrap
+
+It's especially important if you're building websites that people will use on both computers and phones.
+*/
+
+
+#logodiv {
+padding-top:5px;
+float: left;
+border-right:1px solid #990000;
+padding-right:10px;
+}
+
+#signindiv {
+font-weight:bold;
+padding:6px 80px 12px 20px;
+font-size:0.9em;
+float: left;
+border-right:1px solid #990000;
+}
+
+#signindiv img {
+position: relative;
+top:3px;
+}
+
+#topmenudiv {
+float: left;
+}
+
+#topmenudiv ul {
+margin:0;
+padding:0;
+}
+
+#topmenudiv li {
+list-style:none;
+font-weight:bold;
+font-size:0.9em;
+border-right:1px solid #990000;
+height:100%;
+padding: 10px 20px 12px 20px;
+float: left;
+cursor:pointer; /*shows a hand cursor so it's obvious these are clickable*/
+transition:background-color 0.2s; /*makes the hover fade in smoothly instead of snapping*/
+}
+
+#topmenudiv li:hover {
+/*Hover state - lightens the bar slightly when you mouse over an item*/
+background-color:#990000;
+}
+
+#searchdiv {
+float: left;
+padding:5px 0 0 10px;
+}
+
+#searchdiv input {
+height:25px;
+border: none;
+font-size:0.9em;
+padding-left:10px;
+background-image:url("../../images/magnify.png");
+background-repeat:no-repeat;
+background-position:right center;
+}
+
+#newsbar {
+/*This is the big red bar underneath the topbar that
+holds the "NEWS UK" title and the RSS link*/
+background-color:#B80000;
+width:100%;
+height:80px;
+}
+
+#newstitlediv {
+float: left;
+color:#ffffff;
+font-size:3em; /*em is relative to the default font size,
+so 3em means 3 times bigger than normal text*/
+font-weight:bold;
+padding-top:12px;
+}
+
+#uktext {
+/*The smaller "UK" text next to "NEWS" - made smaller
+and normal weight so it sits like a subtitle*/
+font-size:0.4em;
+font-weight:normal;
+vertical-align:middle;
+}
+
+#rssdiv {
+float: right;
+color:#ffffff;
+font-weight:bold;
+font-size:1.1em;
+padding-top:35px;
+}
+
+#rssdiv img {
+height:18px;
+position:relative;
+top:3px; /*nudges the icon down slightly so it lines up with the text*/
+padding-left:5px;
+}
+
+#subnavbar {
+/*The black bar with Home, World, UK, England etc*/
+background-color:#1a1a1a;
+width:100%;
+height:35px;
+overflow-x:auto; /*same idea as #topbar - scrolls sideways on narrow screens
+instead of wrapping the links onto extra lines*/
+white-space:nowrap;
+}
+
+#subnavbar ul {
+margin:0;
+padding:0;
+}
+
+#subnavbar li {
+list-style:none; /*removes the bullet points*/
+float: left; /*makes the list items sit next to each other instead of stacking*/
+color:#cccccc;
+font-size:0.85em;
+padding:10px 12px;
+cursor:pointer;
+transition:background-color 0.2s;
+}
+
+#subnavbar li:hover {
+/*Hover state - shows a lighter dark background when you mouse over an item*/
+background-color:#333333;
+color:#ffffff;
+}
+
+#subnavbar li.selected:hover {
+/*Keeps the selected item white on hover instead of turning dark*/
+background-color:#ffffff;
+color:#000000;
+}
+
+#subnavbar li.selected {
+/*This is the currently selected page (UK), shown with a white background*/
+background-color:#ffffff;
+color:#000000;
+font-weight:bold;
+}
+
+#maincontent {
+padding-top:20px;
+overflow:hidden; /*This clears the floats below so the container
+doesn't collapse to 0 height when both columns are floated*/
+}
+
+#articlecolumn {
+float: left;
+width:68%; /*percentage instead of a fixed px width, so it shrinks
+proportionally with the sidebar when the browser gets narrower*/
+box-sizing:border-box;
+padding-right:2%;
+}
+
+#sidebarcolumn {
+float: right;
+width:30%; /*68% + 30% + the 2% gap above = 100%*/
+box-sizing:border-box;
+}
+
+#datediv {
+color:#666666;
+font-size:0.85em;
+margin-bottom:5px;
+}
+
+#articlecolumn h1 {
+color:#1a3a5c;
+font-size:2em;
+margin:0 0 15px 0;
+}
+
+#articleimage {
+/*Placeholder sizing for the main article photo -
+swap the src on the img tag once you have the real image*/
+width:100%; /*scales with the column instead of a fixed px width*/
+max-width:400px;
+height:auto;
+aspect-ratio:4/3; /*keeps the placeholder box proportioned like a real photo*/
+display:block;
+margin-bottom:15px;
+background-color:#dddddd;
+}
+
+#articletextdiv {
+font-size:0.95em;
+color:#333333;
+line-height:1.4em; /*line-height controls the spacing between lines of text*/
+}
+
+#articlelinks {
+margin:15px 0 0 0;
+padding:0;
+}
+
+#articlelinks li {
+list-style:none;
+color:#1a5a9c;
+margin-bottom:8px;
+padding-left:20px; /*leaves room for the icon added below*/
+position:relative; /*needed so the ::before icon can be positioned inside this element*/
+}
+
+#articlelinks li::before {
+/*::before inserts content before the element without needing
+extra html - here it's used to add a little play icon*/
+content:"\25B6";
+color:#1a5a9c;
+font-size:0.7em;
+position:absolute;
+left:0;
+top:2px;
+}
+
+#articlelinks li.noicon::before {
+/*One of the links in the real site has no icon, so we cancel it out here*/
+content:"";
+}
+
+#articlelinks li.audio::before {
+/*Swaps the play icon for a speaker icon on the audio link*/
+content:"\1F50A";
+}
+
+#watchlistendiv {
+/*The whole grey-bordered box on the right hand side*/
+border:1px solid #cccccc;
+}
+
+#watchlistenheader {
+background-color:#f2f2f2;
+font-weight:bold;
+font-size:1.1em;
+padding:10px 12px;
+border-bottom:1px solid #cccccc;
+overflow:hidden; /*clears the floated dots so the border sits below them*/
+}
+
+#dots {
+float: right;
+padding-top:4px;
+}
+
+.dot {
+/*Each small circle indicating which video is showing*/
+display:inline-block;
+width:8px;
+height:8px;
+background-color:#999999;
+margin-left:4px;
+}
+
+.dot.active {
+background-color:#e07000; /*orange highlights the currently active dot*/
+}
+
+#videodiv {
+position:relative; /*acts as an anchor so the arrows can be positioned absolutely inside it*/
+background-color:#000000;
+overflow:hidden;
+}
+
+.videothumb {
+/*Each of the two video thumbnails, sitting side by side*/
+position:relative;
+float: left;
+width:50%;
+box-sizing:border-box; /*makes width include padding/border instead of adding to it*/
+}
+
+.videothumb img {
+width:100%;
+display:block;
+height:150px;
+background-color:#555555; /*placeholder colour until a real thumbnail is added*/
+}
+
+.playbutton {
+/*The white play triangle overlay on top of each thumbnail*/
+position:absolute;
+top:40%;
+left:45%;
+color:#ffffff;
+font-size:1.5em;
+}
+
+.videotime {
+position:absolute;
+top:8px;
+left:8px;
+background-color:rgba(0,0,0,0.6); /*rgba lets us use a see-through black*/
+color:#ffffff;
+font-size:0.75em;
+padding:2px 5px;
+}
+
+.videocaption {
+/*The orange caption strip along the bottom of each thumbnail*/
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+box-sizing:border-box;
+background-color:rgba(224,112,0,0.9);
+color:#ffffff;
+font-size:0.8em;
+font-weight:bold;
+padding:6px 8px;
+}
+
+.arrow {
+/*The left/right arrows for scrolling between videos*/
+position:absolute;
+top:45%;
+color:#ffffff;
+font-size:1.3em;
+z-index:2; /*makes sure the arrows sit on top of the video thumbnails*/
+}
+
+.arrow.left {
+left:5px;
+}
+
+.arrow.right {
+right:5px;
+}
+
+#livelist {
+margin:0;
+padding:0;
+}
+
+#livelist li {
+list-style:none;
+padding:12px;
+border-top:1px solid #eeeeee;
+color:#1a5a9c;
+font-weight:bold;
+}
+
+.livelabel {
+/*The small red "LIVE" tag before each item in the list*/
+background-color:#cc0000;
+color:#ffffff;
+font-size:0.7em;
+font-weight:bold;
+padding:2px 5px;
+margin-right:6px;
+}

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<!--Css is cascade styling sheet-->
+<!--Inline CSS with HTML is writing css in the style attribute inside HTML elements -->
+<!--Internal CSS is css written in <stlye> </style? tags inside head in html file-->
+<!--External CSS is css written in an outside css file and linked with 
+<link rel="stylesheet" href="style.css" /> in head tags along meta-->
+
+<html>
+
+<head>
+<title>Learning CSS</title>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="" /> <!--To link external css-->
+
+<!-- notice in html you write prprty1="value1,value2" proprty2="value1"-->
+<!-- notice in css you write prprty1:"value1" ; proprty2:"value1"-->
+
+<!--Internal css style tag should be written inside head tag
+and doesnt need type="text/css"(was used on lder version)-->
+
+<!--Priority rules :- inline > internal > external if all css is written it 
+takes upon this rule , unless other modifiers in selectors , or like using !important
+which igoners the rule -->
+
+<!-- . for class ////  # for id-->
+<style>
+
+/*Css selectors :-
+p → element selector → all <p> (example)   -> ()
+.box → class selector → class="box"        -> (.)
+#box → ID selector → id="box"              -> (#)
+* → universal selector → everything        -> (*)
+:hover → pseudo-class → a particular state -> (:)
+*/
+
+ p {
+ color: rgb(255, 0, 0) !important;
+ }
+
+ .blue {
+  color: blue !important;
+ }
+
+ .Large1 {
+    font-size: 300%;
+ }
+ .green {
+    color: green !important;
+ }
+
+ #green {
+    color: green ;
+
+ }
+
+ #green1 {
+    color: green !important;
+
+ }
+/* 
+if Both rules now have !important the browser goes back to  normal comparing specificity.
+p → element selector → lower specificity
+#green2 → ID selector → higher specificity
+*/
+
+ .underline {
+    text-decoration: underline;
+ }
+
+ .linethrough {
+    text-decoration: line-through ;
+ }
+
+ .Large2 {
+    font-size: 150%;
+ }
+
+ .bold {
+    font-weight: bold;
+ }
+ .div1 {
+    background-color:aqua;
+ }
+ .div2 {
+    background-color: blue;
+    height: 150px;
+ }
+
+
+   .div4 {
+    background-color: rgb(234, 255, 0);
+    width: 100px;
+    height: 170px;
+    float: right;
+ }
+    .div5 {
+    background-color: rgb(4, 8, 18);
+    width: 100px;
+    height: 170px;
+    float: left;
+ }
+   .div3 {
+    background-color: rgb(255, 0, 242);
+    width: 100px;
+    height: 170px;
+    float: left;
+   }
+   .clear {
+     clear: both; /*To clear div float on  any direction and clean or clear it 
+     div space in general*/
+   
+   }
+   .div6 {
+    background-color: rgb(255, 0, 0);
+    width: 200px;
+    height: 200px;
+    float: left;
+    position: relative;
+    left: 100px; /*Move from left */
+    top: 20px;
+   }
+    .div7 {
+    background-color: rgb(0, 0, 255);
+    width: 200px;
+    height: 200px;
+    float: left;
+    position: relative;
+    left: -150px; /*Move to left */
+   }
+    .div8 {
+    background-color: red;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    left: 100px;
+    top: 20px;
+    z-index: 2;
+}
+
+    .div9 {
+    background-color: blue;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    left: 100px;
+    bottom: 100px;
+    z-index: 1;
+}
+    .div10 {
+    background-color: rgb(0, 255, 170);
+    position: absolute;
+    width: 50%; /* 50% of parent(ancestor) width*/
+    bottom:0px;
+    right:0px; /*This means it appears on the right bottom*/
+    z-index: 3;
+
+}
+
+    .div11 {
+    background-color: rgb(46, 13, 102);
+    position: absolute;
+    width: 50%; 
+    bottom:0px;
+    left:0px; 
+    z-index: 3;
+
+}
+    .div12 {
+    background-color: rgb(0, 0, 0);
+    position: fixed;
+    width: 200px; 
+    height: 200px;
+    top:0px;
+    right:0px; 
+
+}
+/*margin: top right bottom left;   تشبه عقارب الساعة*/
+/*Putting two like this margin:50px 50px (top+bottom /// left+right) 
+/*Putting three like this margin:50px 50px 50x (top /// left+right /// bottom)
+/*Padding is the same*/
+/* margin = space outside the element
+padding = space inside the element, between content and border. */
+
+    .div13 {
+    background-color: rgb(4, 4, 4); 
+    width: 200px; 
+    height: 200px;
+    margin: 50px 50px;/*50 px distance from all sides*/
+    }
+    .d13textmargin {
+        margin:0px 0px 25px 25px;
+    
+    }
+    .d13textmargin2 {
+        margin:0px 0px 125px 125px;
+    }
+
+    .div14 {
+    background-color: rgb(4, 4, 4); 
+    width: 200px; 
+    height: 200px;
+    margin-left:100px;
+    padding: 50px ;
+    }
+/*BORDERS :-
+border: width style color;
+border affects the element's size(width and height)*/
+
+    .div15 {
+    width:100px;
+    height:100px;
+    margin: 50px 0px 0px 50px;
+    float: left;
+    box-sizing: border-box; /*groups the border size with the element size*/
+    }
+
+    .d15red {
+    background-color:red;
+    border:10px solid black; /*the 10px here adds 20 weight(left,right) , and 20 height(top,bottom)*/
+    }
+    .d15blue {
+    background-color:blue;
+    /*You can specify top, right, bottom, left:(same as padding and margin)*/
+    border-style: ridge solid dotted dashed;
+    border-width:10px 5px 3px 1px;
+    border-color:green yellow red black;
+    
+    }
+    .d15green {
+    background-color:green;
+    border-radius:50px; /*Rounds the corners*/
+
+    }
+    .div15a {
+    width:100px;
+    height:100px;
+    margin: 50px 0px 0px 50px;
+    float: left;
+    background-color:green;
+    }
+
+    .div15b {
+    width:500px;
+    }
+/*The font family is putting all font type you want and it picks the first one if not found
+it select the next one until one is working*/
+    .p1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-weight: bold;
+    }
+
+    .p2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 200%;
+    font-style: italic;
+    text-decoration: underline;
+    }
+
+    .p3{
+    font-family: monospace,Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.1em; /*em has a default 16px in browsers but its relative to the relevant element/parent font size,
+     so if the parent has font-size: 20px, then 1em can be 20px instead*/
+     text-transform: uppercase;
+     text-align: center;
+    }
+     .div16 {
+    background-color: rgb(9, 9, 9);
+    height: 150px;
+    text-align: center;
+ }
+
+    .p4{
+     font-family: monospace,Tahoma, Geneva, Verdana, sans-serif;
+     font-size: 2.1em;
+     text-transform: uppercase;
+     text-align: center;
+     text-align: justify; 
+     /*increases the spaces between words so each line reaches both sides of the paragraph.*/
+    }
+     /* Will use the pseduo selectors here for links*/
+    a:visited{
+        color: white;
+        background-color: blue;
+    }
+    a:hover{
+    color: green;
+    background-color: red;
+    size: 120%;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div>
+
+<h1>Example Domain</h1>
+
+<!-- this is an example of inline CSS - css سطري - داخل السطر , see how we write css in the opening tag of an HTML element -->
+<!-- Notice how in css we put the modifier : value , while in html modifier="value"-->
+<!-- also can call it attribute not a modifier-->
+<!-- we put first proprety;second proprety (; to sperate and more than one css proprety)-->
+<!-- putting a semi colon even with one proprety is still valid and probably better than not putting it -->
+
+<p style="color: blue">This domain is established to be used for illustrative e
+documents. You may use this
+domain in examples without prior coordination or asking for permission .</p>
+<p style="color: rgb(120, 47, 47); font-size: 200%;"><a href="../index.html">More information ...</a></p>
+<a href="../index.html">More information ...</a>
+
+
+<!--CLASS AND ID :- -->
+<!--Class is to group a buch of elements and apply css on all of them, more than one html element can share class -->
+<!--Id is unique to one only , id: identifier -->
+<!--Written inside openoing tag -->
+
+<!--Important to note that id are meant to use for one element even though html allow apply it to more than one element
+but you should only write it to one element only since it can cause issues when using javascript and links
+JS :- document.getElementById("green1") /// LINKS :- <a href="#green1">Go to element</a> -->
+
+<p class="Large1"> This an html element 1 with large class</p>
+<p id="green" class="Large1"> This an html element 2 with large class and id green but lost specificity</p>
+<p id="green1" class="Large1"> This an html element 3 with large class and id green but won specificity</p>
+
+<p  class="Large1"> Using <span class="underline">span to apply css to a section </span>on a paragrah</p>
+<p  class="Large1"> Using <span class="underline">span to apply css to a one <span class="linethrough Large2"> word </span>
+     only </span>on a paragrah</p>
+
+<!-- One writing class=" " you can put more than one class together in it -->
+<!-- They get rendered or read from left one to the right-->
+
+<hr>
+<p  class="Large1 bold Large2"> Using <span class="underline">span to apply css to a one <span class="linethrough Large2"> word </span>
+     only </span>on a paragrah</p>
+
+<p  class="Large2 Large1"> Using <span class="underline">span to apply css to a one <span class="linethrough Large2"> word </span>
+     only </span>on a paragrah</p>
+<!-- Notice how the large2 value tookover the large1 value but in span it acted as a multiplier to its-->   
+<!-- The reason why large2 value is the one we took because of its order in the css style (THE LATER ONE GETS SPECIFITY)-->
+
+<p  class="Large2 bold" class="Large1 "> Using <span class="underline">span to apply css to a one <span class="linethrough Large2"> word </span>
+     only </span>on a paragrah</p>
+
+<p  class="Large1 " class="Large2 bold "> Using <span class="underline">span to apply css to a one <span class="linethrough Large2"> word </span>
+     only </span>on a paragrah</p>    
+<!--an HTML element cannot have two separate class attributes the (class="")-->     
+<!--So only the first one is the value which get rendered-->
+<hr>
+</div>
+
+<!-- Div means divison : جزء -->
+<!--div in general is an invisible effect by itself
+To be visible and actually make differnce we can use it with css-->
+
+<!--Block element is an element that takes the whole page width , examples like paragraph-->
+<div class="div1">
+    <p>See how putting paragraph a block element inside div takes up the whole width , to change it by modifying div width in css</p>
+</div>
+
+<!-- WORKING WITH DIV
+
+if each <div> needs completely different styling, you can give them different classes:
+
+<div class="div1">...</div>
+<div class="div2">...</div>
+.div1 {
+    background: red;
+}
+
+.div2 {
+    background: blue;
+}
+
+But if several <div>s share the same styling, use the same class:
+
+<div class="box">...</div>
+<div class="box">...</div>
+.box {
+    padding: 20px;
+    border: 1px solid black;
+}
+
+And if you need common styling + some individual differences, combine classes:
+
+<div class="box div1">...</div>
+<div class="box div2">...</div>
+
+.div1 {
+    background: red;
+}
+
+.div2 {
+    background: blue;
+}
+    -->
+
+<div class="div2">
+<p class="green"> This is a paragraph with a controlled space inside a div</p>
+</div>
+<hr>
+<!-- WORKING WITH COLORS :-
+1- HEX (hex color) → #RRGGBB — represents Red, Green, Blue using hexadecimal values.
+Example: #FF0000 = red
+2- RGB → rgb(255, 0, 0) — directly specifies Red, Green, Blue values from 0–255.
+2.5- rgba: alpha(opicity)
+3- HSV → hsv(0, 100%, 100%) — represents Hue, Saturation, Value. It's more intuitive for choosing/adjusting colors.
+4- By the name of the color -> green  
+There is some sites where you can get the color of codes you want
+-->
+
+<!--Float in css is like pressing an element into a side-->
+<!--Float works across all of the page window and its sizing-->
+<!--Two floats on the same direction but renders the first as the one which appeared first in html -->
+<p class="Large1 bold"> No clear here</p>
+
+<div class="div3">
+<p class="green"> This is a paragraph with a controlled space inside a div and a float left</p>
+</div>
+
+<div class="div4">
+<p class="green"> This is a paragraph with a controlled space inside a div and a float right</p>
+</div>
+
+
+<div class="div5">
+<p class="green"> This is a paragraph with a controlled space inside a div and a float left and
+     floats towards the first one on left</p>
+</div>
+
+<div class="clear"></div>
+
+<p class="Large1 bold">With clear here</p>
+
+<div class="div3">
+<p class="green"> This is a paragraph with a controlled space inside a div and a float left</p>
+</div>
+
+<div class="div4">
+<p class="green"> This is a paragraph with a controlled space inside a div and a float right</p>
+</div>
+
+<div class="clear"></div>
+
+<div class="div5">
+<p class="green"> This is a paragraph with a controlled space inside a div and a float left and
+     floats towards the first one on left</p>
+</div>
+
+<!--Postitions:- -->
+<!--By default any element postition is static -->
+
+<!--static — Default. Element stays in the normal document flow. top, left, etc. don't work.-->
+<!--relative — Stays in the normal flow, but you can move it using top, left, right, bottom. Its original space is preserved-->
+<!--absolute — Removed from normal flow. Positioned relative to the nearest positioned ancestor (relative, absolute, etc.).-->
+<!--fixed — Removed from normal flow and positioned relative to the browser window. It stays in place when you scroll.-->
+
+
+<div class="clear"></div>
+<hr>
+
+<div class="div6">
+<p class="blue"><span class="Large2">Default:</span> How positions works on css</p>
+</div>
+<div class="div7">
+<p>How positions works on css</p>
+</div>
+<!-- 
+z-index controls which element appears in front of or behind another element when they overlap
+Higher z-index → closer to the front
+Lower z-index → farther behind
+It generally applies to positioned elements (relative, absolute, fixed, sticky)
+like layers higher z-index = higher layer.
+
+Default if not assigned : Elements that come later in the HTML generally appear on top of earlier overlapping elements.
+-->
+
+<div class="clear"></div>
+<br><br><br><br><br><br><br>
+
+<div class="div8">
+<p class="blue"><span class="Large2">Changing z-index:</span> How positions works on css</p>
+</div>
+
+<div class="div9">
+<p>How positions works on css</p>
+</div>
+
+<div class="div8">
+<p class="blue"><span class="Large2">Changing z-index:</span> How positions works on css</p>
+</div>
+
+<div class="div9">
+<p>How positions works on css</p>
+
+
+<!--
+Nested div is a div inside div and it changes how divs work so be carful
+absolute take the poistion from nearst ansector on nested relation) 
+absolute — Removed from normal flow. Positioned relative to the nearest positioned ancestor (relative, absolute, etc)
+-->
+
+<div class="div10">
+<p >See how absolute posistion took position from the div9 relative position</p>
+</div>
+
+<div class="div11">
+<p >See how absolute posistion took position from the div9 relative position</p>
+</div>
+
+</div>
+
+<div class="clear"></div>
+<br><br><br><br><br><br><br>
+
+<div class="div12">
+<p >See how fixed posistion works , it stays in the same place , scrolling doesnt matter
+,Good for things that needs to stay on the same posistion    
+</p>
+</div>
+
+<!--MARGINS : The distance between elements-->
+
+<div class="clear"></div>
+
+<div class="div13">
+<p class="d13textmargin"> testing margin on text alone
+</p>
+<p class="d13textmargin2"> testing margin on text alone
+</p>
+</div>
+
+<!--Padding : space inside the element, between content and border
+Also note that padding can affect width and height so be carful
+There is some default padding and margin for paragraph , i can reset it to zero by 
+p{padding:0; margin:0;}
+-->
+
+<div class="clear"></div>
+
+<div class="div14">
+<p >See how Padding works inside</p>
+</div>
+
+<!--Borders:- -->
+<div class="clear"></div>
+
+<div class="div15 d15blue"></div>
+<div class="div15 d15green"></div>
+<div class="div15 d15red"></div>
+
+<div class="clear"></div>
+
+<div class="div15a"></div>
+<div class="div15a"></div>
+<div class="div15a"></div>
+
+<!--FONTS FAMILIES :
+| Family       | Meaning                                                        | Examples                                    |
+| ------------ | -------------------------------------------------------------- | ------------------------------------------- |
+| `serif`      | Has small decorative strokes (“serifs”) at the ends of letters | Times New Roman, Georgia                    |
+| `sans-serif` | **“Sans” = without** → no decorative strokes                   | Arial, Helvetica                            |
+| `monospace`  | Every character has the **same width**                         | Consolas, Courier New                       |
+| `cursive`    | Looks like **handwriting**                                     | Comic Sans MS, cursive fonts                |
+| `fantasy`    | Decorative/unusual display fonts                               | Papyrus, Impact                             |
+| `system-ui`  | Uses the **operating system's default UI font**                | Segoe UI on Windows, San Francisco on macOS |
+
+Prefereed one is sans-serif
+-->
+<div class="clear"></div>
+
+<p class="p1">This is a text 1 </p>
+<p class="p2">This is a text 2 </p>
+<p class="p3">This is a text 3 </p>
+
+<div class="div2">
+<p class="p3"> This is a paragraph with a a text aligned from its own paragraph class</p>
+</div> 
+<!--I put the textalign from the paragraph class but it can be from the div2-->
+
+<div class="div16">
+<p > This is a paragraph with a text aligned from the container the dev class </p>
+</div> 
+
+<div class="div16">
+<p class="p4"> This is a paragraph with a a text aligned from its own paragraph class
+     and its a used with <span class="Large2">justify</span> repeated: This is a paragraph with a a text aligned from its own paragraph class
+     and its a used with <span class="Large2">justify</span>
+</div> 
+
+<!--Link decoration using : selector (visited/hover)-->
+
+<hr>
+<div class="div16">
+<p class="p3"><a href="https://www.wikipedia.org/" target="_blank">wikipedia</a></p>
+
+<p class="p3"><a href="https://en.wikipedia.org/wiki/Palestine" target="_blank">Palestine in wikimedia</a></p>
+
+</div>
+
+</body>
+</html>
+

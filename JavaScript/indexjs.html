@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Learning Javascript</title>
+
+<!-- JavaScript work in the same way as css when combined with html
+inline inside the html element tags , external(connected with outside of the file js file) ,
+internal in <script> tags -->
+
+<!--In css the tags we put the tags <style> in head 
+Because the browser should load the CSS before displaying the page,
+so the content appears styled instead of briefly unstyled
+
+however in javascript tags<script> we can put them in head or body
+but its prefered to put them in end of body to html can load before  -->
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<style>
+/*Cant add custom css for alert in javascript since its controlled by browser but 
+i can manually add a new custom alert*/
+
+.customalert{
+  background: black;
+  color: white;
+  padding: 50px;
+  margin: 50px;
+  border-radius: 10px;
+  width:auto 20%;
+  height:auto 100%;
+
+}
+
+#circle1{
+width:50px;
+height:50px;
+border-radius:10px;
+background-color:rgb(60, 12, 12);
+
+}
+
+</style>
+
+</head>
+
+<body>
+<div class="customalert">Custom alert in div element </div>
+
+<hr>
+
+<button style="size: 20px; background-color: aqua;">Click1</button> <!--inline css-->
+<button onclick="hi">Click2</button> <!--Wrong format-->
+<button onclick="alert('Hello User')">Click3</button> <!--inline js-->
+
+<hr>
+
+<p id="text1">Current Text</p>
+<p id="text2">Current Text2</p>
+
+<hr>
+
+<button id="btnevent1">This is a button with a click event</button>
+
+<hr>
+
+<button id="textChanger">Change first div text</button>
+<div id="firstDiv">This is some text</div>
+
+<button id="textAppender">Append some text</button>
+<div id="secondDiv">Javascript is ...</div>
+
+<button id="textCreator">Create some text</button>
+<div id="emptyDiv"></div>
+
+<hr>
+
+<p>Test How new text will appear</p>
+
+<hr>
+
+<div id="circle1"></div>
+
+<hr>
+
+<input id="myInput" type="text" value="test" /> <!--initial value-->
+<button id="stylesChanger">Change the text !</button>
+<div id="thirdDiv">This is some text</div>
+
+<input id="myInput2" type="text" value="test" /> <!--initial value-->
+<button id="stylesChanger2">Change the text !</button>
+<div id="thirdDiv2">This is some text</div>
+
+<hr>
+
+<button id="stylesChanger3">Change the text !</button>
+<button id="stylesChanger4">Change the text !array2</button>
+<div id="fourthDiv">This is some text</div>
+
+<hr>
+
+<p>What is the weather ? /rain</p>
+<input id="weather" />
+<button id="myButton">Submit</button>
+
+<hr>
+
+<p id="arrayString"></p>
+
+<hr>
+
+<p>How many fingers are you holding up ?</p>
+<input id="myNumber"/>
+<button id="guess">Guess !</button>
+
+<hr>
+
+<p id="paragraphF">Math Calcution will appear here</p>
+
+
+<!--Javascript is loaded top to bottom-->
+<script>
+//alert like print
+
+// In HTML/JavaScript, document means the current web page
+//.innerHTML in JavaScript lets you get or change the HTML inside an element.
+document.getElementById("text1").innerHTML="Username"
+document.getElementById("text1").innerHTML="UsernameButLater"
+document.getElementById("text2").innerHTML="<p>UsernameButWithTags</p>"
+
+document.getElementById("btnevent1").onclick=function() { //anon function(no name)
+alert("This is after clicking the button");
+}
+//New Section :
+
+document.getElementById("textChanger").onclick=function() {
+document.getElementById("firstDiv"). innerHTML="This is awesome!";
+}
+
+document.getElementById("textAppender").onclick=function() {
+document.getElementById("secondDiv").innerHTML=document.getElementById("secondDiv").
+innerHTML + "great!";
+}
+
+document.getElementById("textCreator").onclick=function() {
+document.getElementById("emptyDiv").innerHTML="<ul><li>Edit</li><li>Add</li><li>Create</li></ul>";
+}
+
+//New Section :
+
+document.getElementById("circle1").onclick=function() {
+document.getElementById("circle1").style.display="none";
+}
+
+//New Section : Varaiables
+//Javascript is event driven , events change the javascript
+// intializing a variable
+// Can use let,var,const as varaiables
+
+var newText=document.getElementById("myInput").value; //Gotten from the start
+
+document.getElementById("stylesChanger").onclick=function() {
+document.getElementById("thirdDiv").innerHTML=newText;
+}
+
+document.getElementById("stylesChanger2").onclick=function() {
+newText=document.getElementById("myInput2").value; //So we should update the variable after clicking to get the new value
+document.getElementById("thirdDiv2").innerHTML=newText;
+}
+
+//New Section : array
+// First way of initailizing an array
+// array are indexed starting from 0
+
+var myArray=new Array();
+
+myArray[0]="pizza";
+myArray [1]="chocolate";
+
+// important when we want to deal with web services
+// We need to interact with some data like here with array data
+// but we dont want to show it in the html page so it goes hidden
+// we can view it with inspect element and go to console
+console.log(myArray); 
+
+document.getElementById("stylesChanger3").onclick=function() {
+document.getElementById("fourthDiv").innerHTML=myArray[1];
+}
+
+//another way of initalizing the array
+myOtherArray=["rain","sunshine"];       
+//Push work: adding to last of the array (like a stack push)     
+myOtherArray.push("snow");                   
+myOtherArray.splice(2, 0, "hail", "cloudy"); 
+//Splice work : first space : the index after which the changes will be made
+//Second space : how many removed elements from the array after that index
+//Third space : can add any element to the array
+
+//console. log(myOtherArray. length) ; shows length of an array
+console.log(myOtherArray);
+
+document.getElementById("stylesChanger4").onclick=function() {
+document.getElementById("fourthDiv").innerHTML=myOtherArray[1];
+}
+//New Section : if statments
+//in if statments two equals (==) for comparing and one (=) is for assignment
+
+document.getElementById("myButton").onclick=function() {
+
+if (document.getElementById("weather").value == "rain") {
+
+alert ("it's raining");
+
+} else{
+
+alert("it's not raining!");
+
+}
+
+}
+
+//New Section : For loops
+//Concatenation = joining arrays together.
+
+var arrayString=""; // if initalized like this (var arrayString) is starts with undefined
+//So we put it with "" to make it empty
+var myArray2=["pizza", "chocolate", "crisps"];
+
+for (var i=0; i<myArray2.length; i++) {
+arrayString=arrayString+myArray2[i]+" ";
+}
+document.getElementById("arrayString").innerHTML=arrayString;
+
+//New Section : While loops
+
+document.getElementById("guess").onclick=function() {
+var gotit=false; var guesses=1; var x;
+
+while (gotit == false) {
+x=Math.random();
+x=6*x;
+x=Math.floor(x);
+
+if (document.getElementById("myNumber").value == x) {
+gotit=true;
+alert("Got it! It was a "+x+". It only took me "+guesses+" guesses!")
+
+} else {
+
+guesses++;
+}
+}
+}
+
+//New Section : Functions
+
+function adding(a, b) {
+return(a+b);
+}
+document.getElementById("paragraphF").innerHTML=adding(876, 54);
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<title>Learning CSS</title>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="bbcnews.css" /> <!--To link external css-->
+
+</head>  
+
+<body>
+
+<div id="container"> <!--A div container to cover all page-->
+
+    <div id="topbar"> <!--A div topbar for all the top bar-->
+
+       <div class="fixedwidth"> <!-- A fixed width for a part of the top bar to say fixed even when resizing-->
+
+            <div id="logodiv">
+              <img src="../../images/bbcnewslogo.png" alt="bbcnewslogo" />
+            </div>
+
+            <div id="topmenudiv">
+
+<ul>
+
+<li>News</li>
+<li>Sport</li>
+<li>Weather</li>
+<li>iPlayer</li>
+<li>TV</li>
+<li>Radio</li>
+<li>More ...</li>
+
+</ul>
+
+</div>
+
+<div id="searchdiv">
+
+<input type="text" placeholder="Search..." />
+
+</div>
+       </div> 
+
+    </div>
+
+    <div id="newsbar"> <!--A div newsbar for the big red "NEWS UK" title section-->
+
+        <div class="fixedwidth"> <!-- Same fixed width trick as the topbar so it lines up-->
+
+            <div id="newstitlediv">
+                NEWS <span id="uktext">UK</span> <!--UK is wrapped in a span so it can be styled smaller-->
+            </div>
+
+            <div id="rssdiv">
+                RSS <img src="../../images/rss.png" alt="rss" />
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="subnavbar"> <!--A div subnavbar for the black bar with Home/World/UK etc-->
+
+        <div class="fixedwidth">
+
+            <ul>
+
+                <li>Home</li>
+                <li>World</li>
+                <li class="selected">UK</li> <!--selected class shows this is the current page-->
+                <li>England</li>
+                <li>N. Ireland</li>
+                <li>Scotland</li>
+                <li>Wales</li>
+                <li>Business</li>
+                <li>Politics</li>
+                <li>Health</li>
+                <li>Education</li>
+                <li>Sci/Environment</li>
+                <li>Technology</li>
+                <li>Entertainment &amp; Arts</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="fixedwidth"> <!--Reusing fixedwidth again to keep the article and sidebar lined up with everything above-->
+
+        <div id="maincontent"> <!--Wraps both columns so we can clear the floats in one place-->
+
+            <div id="articlecolumn"> <!--Left column: the actual news article-->
+
+                <div id="datediv">2 April 2014 Last updated at 15:23</div>
+
+                <h1>Pollution to spread across England</h1>
+
+                <!--Placeholder image - swap the src for the real photo later-->
+                <img id="articleimage" src="../../images/placeholder.png" alt="placeholder" />
+
+                <div id="articletextdiv">
+
+                    <p>Health warnings have been issued by the government as pollution spreading across England is forecast to hit high levels.</p>
+
+                    <ul id="articlelinks"> <!--Each li gets a little icon added via CSS ::before-->
+                        <li>Why are pollution levels so high?</li>
+                        <li>Saharan dust visible on cars</li>
+                        <li>How Saharan dust reached the UK</li>
+                        <li class="noicon">What will pollution do to us?</li> <!--noicon removes the play icon for this one-->
+                        <li class="audio">How Saharan dust reached the UK</li> <!--audio swaps in a speaker icon instead-->
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div id="sidebarcolumn"> <!--Right column: the Watch/Listen box-->
+
+                <div id="watchlistendiv">
+
+                    <div id="watchlistenheader">
+                        Watch/Listen
+                        <span id="dots"> <!--The little dots showing how many videos there are-->
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </span>
+                    </div>
+
+                    <div id="videodiv"> <!--Holds both video thumbnails plus the left/right arrows-->
+
+                        <span class="arrow left">&lt;</span>
+
+                        <!--Placeholder image again - swap for the real video thumbnail-->
+                        <div id="videothumb1" class="videothumb">
+                            <img src="../../images/placeholder.png" alt="placeholder" />
+                            <span class="playbutton">&#9658;</span>
+                            <span class="videotime">01:34</span>
+                            <div class="videocaption">Titanic letter could fetch &pound;100,000</div>
+                        </div>
+
+                        <div id="videothumb2" class="videothumb">
+                            <img src="../../images/placeholder.png" alt="placeholder" />
+                            <span class="playbutton">&#9658;</span>
+                            <span class="videotime">01:49</span>
+                            <div class="videocaption">Cameron defends 'Muppet' remark</div>
+                        </div>
+
+                        <span class="arrow right">&gt;</span>
+
+                    </div>
+
+                    <ul id="livelist"> <!--The list of currently live streams below the videos-->
+                        <li><span class="livelabel">LIVE</span> BBC News Channel</li>
+                        <li><span class="livelabel">LIVE</span> Radio 5 live</li>
+                        <li><span class="livelabel">LIVE</span> Osborne questioned on budget</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div> <!--closes the #container div opened at the very top-->
+
+</body>  
+
+
+</html>

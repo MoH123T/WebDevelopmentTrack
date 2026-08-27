@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<!--
+jQuery is a javascript library , that makes writing javascript easier and shorter
+
+Another library of it is jQueryui
+Another addons/plugins we might use:
+hooks.js(use hooks : for whole refresh) , tooltipster
+Magnific pop up ,unSlider, typeahead.js
+
+Can be added using cdn without download like this 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+or can just put it like this   https://code.jquery.com/jquery-latest.min.js
+
+or by downloading and putting the file like this 
+<script src="jquery-3.7.1.min.js"></script>
+if jQuery downloaded it should be placed in the files
+The one being used in course is : jquery-1.11.0.min.js
+
+Suggested to be downloaded (for more control)
+-->    
+<title>Learning jQuery</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content=" width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!--jQuery should be written before the javascript file since its order based-->
+    <script src="script.js" defer></script>
+
+
+
+<style>
+
+#circle {
+width:200px;
+height:200px;
+background-color:green;
+border-radius:100px;
+}
+
+.square {
+width:200px;
+height:200px;
+background-color:red;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+</style>
+</head>
+
+<body>
+<button id="btnjQueryChecker">Check jQuery Vailidility</button>
+
+<hr>
+
+<div id="circle"></div>
+<div class="square"></div>
+
+<hr>
+
+<div class="square"></div>
+<div class="square"></div>
+<p>This is some text</p>
+<div class="square"></div>
+<iframe src="https://anbilarabi.com/"></iframe>
+
+<hr>
+
+<div class="square"></div>
+<div class="square"></div>
+
+<hr>
+
+<p>This is some text .</p>
+
+<button id="fader">Fade Out</button>
+
+<button id="faderIn">Fade In</button>
+
+<hr>
+
+<div class="square"></div>
+
+<hr>
+
+<button id="btnregex">Check Regular Expressions</button>
+
+<hr>
+
+
+<script>
+
+//How to check if jquery is working normally 
+//typeof is an operator that tells you the data type of a value
+// if the type of jQuery is not (non-exisitent) ((If jQuery exists do this:))
+document.getElementById("btnjQueryChecker").onclick=function(){
+if (typeof jQuery != "undefined") { 
+
+alert('jQuery is installed!');
+} else {
+alert('jQuery is not installed!');
+}
+}
+
+// Section :-
+
+// How to deal with clicking on things(substitute for 
+// document.getElementById("btnjQueryChecker").onclick=function(){
+// $ does the job of the above comment
+
+// One of the qualities of using jquerey is now we can use 
+// any selector like class selector (ex: .square), or element selector (div)
+// in normal javascript this wasnt allowed
+
+$("#circle").click(function() {
+
+alert("Circle Clicked!");
+
+});
+
+$(".square").click(function() {
+
+alert("Square Clicked!");
+
+});
+
+// Section :-
+// How to change webpage content
+// eq to select based on the number of elements of thier order, 
+// starts with 0 as index for first element
+// that share the same selector
+
+$(".square").eq(0).click(function(){
+
+$("p").html("The text has been changed!");
+});
+
+$(".square").eq(1).hover(function() { // same but by hovering 
+
+$("p").html("Changed!");
+
+});
+
+$(".square").eq(2).click(function() { // When using .html() like this , it means get the value , not edit it
+
+alert($("p").html());
+
+});
+
+$(".square").eq(3).click(function() {
+// or can used : alert($("iframe").attr("src")); to get the name of the site
+$("iframe").attr("src", "http://www.greenbackend.com"); //first is our site and the second is the new site
+// attr : attribute
+});
+
+// Section :-
+// How to change style(Shape) using jquery
+
+$("div").click(function() {
+// alert($(this).css("width"));
+// get the width od any div we click
+// this means div (the element we used , this to make it easier)
+
+$(this).css("width" , "400px") // change original width to 400px
+
+});
+
+// make any div disapper $(div).css("display" , "none") 
+// or can use this $(div).hide();
+
+$("div").eq(5).click(function() { // when clicking the sixth
+$("div").eq(6).fadeOut(); //make the seventh div disapper slowly
+});
+
+//Section :-
+// fade out,in
+
+$("#fader").click(function() {
+$("p").eq(1).fadeOut(2000); //can put a number that is counted in milli seconds
+});
+
+$("#faderIn").click(function() { // or can put a parameter
+$("p").eq(1).fadeIn("fast" , function(){ // can put another value called call back
+    alert("Fade in completed!")  // get implemented or run after the fade in 
+}); // i put eq (1) to specify the paragarph i needed to fade in
+}); // since if i didnt put it i would get alerts as the number of all pragraphs
+
+// Section :
+//Animation by scripting ,not by timeline
+
+$(".square").eq(6).click(function() {
+
+$(this).animate({
+width:"300px", // css propreties
+height:"300px",
+borderRadius:"150px",
+marginLeft:"100px",
+marginTop:"100px"
+},1800); //time in milli seconds
+
+});
+
+// Section : data grabbing with ajax
+// asyncronouns javascript and xml
+// asyncronouns web call
+// asyncronouns : not existing or occurring at the same time.
+// AJAX in jQuery lets your webpage send or receive data from a server without refreshing the page.
+// JavaScript → request server → server responds → update part of the page
+// a technique for communicating with a server in the background
+
+// can be get or post 
+$.get("test.html", function(data) { // function(data) what the server sent back
+
+alert(data);
+
+});
+
+// better way of writing
+//$("h1").html(data);
+//$("h1").append(data);
+
+$.ajax({
+url:"test.html"
+}). done( function(data) {
+
+alert(data);
+
+});
+//done() is a callback that runs when the AJAX request succeeds.
+// Send request → If successful → run done()
+// if using success : Click button → request page → entire page reloads
+// can write the same like this 
+
+/**
+$.ajax({
+    url: "test.html",
+    success: function(data) {
+        alert(data);
+    }
+});
+
+with done you do one for fail too :
+
+$.ajax({
+    url: "test.html"
+})
+.done(function(data) {
+    alert(data);
+})
+.fail(function() {
+    alert("Request failed");
+});
+**/ 
+
+
+
+
+// Section :-
+// Regex : Regular Expressions 
+// Example : a form that you want the user to not enter wrong info
+
+var regex=/great/i; // i : incase sensitive , g: global //Similar to linux commands
+
+var string="Regex is Great!";
+
+var result = string.match(regex);
+
+$("#btnregex").click(function(){
+alert(result);
+});
+
+
+// Section :-
+
+</script>
+
+</body>
+
+
+</html>

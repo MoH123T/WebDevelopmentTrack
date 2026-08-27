@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="To-do-list">
+  <meta name="keywords" content="List,track">
+  <title>To-Do List</title>
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/81/81665.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/confirm.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body>
+
+  <!-- Site-wide header and home link -->
+  <header class="site-bar">
+    <a href="index.html" class="site-name">
+      <img src="https://cdn-icons-png.flaticon.com/512/81/81665.png" alt="" class="site-icon">
+      <span>To-do-list</span>
+    </a>
+  </header>
+
+  <!-- Main task application: task creation and task management views -->
+  <div class="app">
+
+    <div class="app-header">
+      <h1>My Tasks</h1>
+      <div class="header-actions">
+        <button id="calendar-view-btn" class="header-btn" title="View calendar">Calendar</button>
+        <button id="notes-view-btn" class="header-btn" title="View all notes">Notes</button>
+      </div>
+    </div>
+
+    <div class="view-tabs" role="tablist" aria-label="Task views">
+      <button class="view-tab active" data-view="add-view" role="tab" aria-selected="true">Add task</button>
+      <button class="view-tab" data-view="tasks-view" role="tab" aria-selected="false">My tasks</button>
+    </div>
+
+    <section id="tasks-view" class="app-view hidden" aria-label="View and manage tasks">
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-number" id="stat-total">0</span>
+        <span class="stat-label">Total</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number" id="stat-active">0</span>
+        <span class="stat-label">Active</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number" id="stat-done">0</span>
+        <span class="stat-label">Done</span>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <input type="text" id="search-input" placeholder="Search tasks...">
+      <select id="sort-select" title="Sort by">
+        <option value="created">Newest</option>
+        <option value="priority">Priority</option>
+        <option value="due">Due date</option>
+        <option value="alpha">A-Z</option>
+      </select>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="active">Active</button>
+      <button class="filter-btn" data-filter="completed">Completed</button>
+    </div>
+
+    <ul id="todo-list"></ul>
+
+    <div class="footer">
+      <span id="items-left">0 items left</span>
+      <div class="footer-actions">
+        <button id="clear-completed">Clear completed</button>
+        <button id="clear-all">Clear all</button>
+      </div>
+    </div>
+    </section>
+
+    <section id="add-view" class="app-view" aria-label="Add a task">
+      <div class="section-heading">
+        <h2>Add a task</h2>
+        <p>Create a new task</p>
+      </div>
+      <form id="todo-form">
+        <input type="text" id="todo-input" placeholder="What needs to be done?" autocomplete="off">
+        <select id="priority-input" title="Priority">
+          <option value="easy" selected>Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <label class="field-label" for="due-input">Due date
+          <input type="date" id="due-input" title="Due date">
+        </label>
+        <label class="field-label note-field" for="new-task-note">Notes (optional)
+          <textarea id="new-task-note" placeholder="Add a note..."></textarea>
+        </label>
+        <button type="submit">Add task</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- Site-wide footer -->
+  <footer class="site-footer">
+    <p>Made by : Mohammad Hmaid , To-Do-List</p>
+  </footer>
+
+  <!-- Notes panel for a single task -->
+  <div id="notes-modal" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="notes-modal-title">Notes</h2>
+        <button class="modal-close" data-close="notes-modal">&times;</button>
+      </div>
+      <textarea id="notes-textarea" placeholder="Write a note for this task..."></textarea>
+      <div class="modal-actions">
+        <button id="save-note-btn" class="primary-btn">Save Note</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Standalone view of all notes across all tasks -->
+  <div id="all-notes-modal" class="modal-overlay hidden">
+    <div class="modal modal-large">
+      <div class="modal-header">
+        <h2>All Notes</h2>
+        <button class="modal-close" data-close="all-notes-modal">&times;</button>
+      </div>
+      <div id="all-notes-list"></div>
+    </div>
+  </div>
+
+  <!-- Calendar view -->
+  <div id="calendar-modal" class="modal-overlay hidden">
+    <div class="modal modal-large modal-calendar">
+      <div class="modal-header">
+        <div class="calendar-nav">
+          <button id="cal-prev" class="header-btn small">&lsaquo;</button>
+          <h2 id="calendar-month-label">Month</h2>
+          <button id="cal-next" class="header-btn small">&rsaquo;</button>
+        </div>
+        <button class="modal-close" data-close="calendar-modal">&times;</button>
+      </div>
+      <div id="calendar-legend" class="calendar-legend">
+        <span><i class="dot dot-created"></i> Created</span>
+        <span><i class="dot dot-due"></i> Due</span>
+      </div>
+      <div id="calendar-grid" class="calendar-grid"></div>
+      <div id="calendar-day-detail" class="calendar-day-detail"></div>
+    </div>
+  </div>
+
+  <!-- Confirmation popup -->
+  <div id="confirm-modal" class="modal-overlay hidden">
+    <div class="modal modal-confirm">
+      <div class="confirm-icon" id="confirm-icon">!</div>
+      <h2 id="confirm-title">Are you sure?</h2>
+      <p id="confirm-message">Please confirm this action.</p>
+      <div class="modal-actions confirm-actions">
+        <button id="confirm-cancel-btn" class="secondary-btn">Cancel</button>
+        <button id="confirm-ok-btn" class="primary-btn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+
+</body>
+</html>

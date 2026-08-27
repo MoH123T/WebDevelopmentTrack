@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning JqueryUI</title>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <!--Order matters since jquery is the parent of jqueryui-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js"></script>    
+
+
+</head>
+<style>
+
+#square {
+height:200px;
+width:200px;
+background-color:grey;
+
+}
+
+#resizable {
+width:200px;
+height:200px;
+background-color:red;
+}
+
+#target {
+height:300px;
+width:300px;
+background-color:yellow;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="square">Try to drag the box!</div>
+
+<div id="resizable">Resize Me!</div>
+
+<div id="target"></div>
+<hr><br>
+
+<div id="accordion">
+<h3>Title</h3>
+<div>
+<p>This is some text. This is some text. This is some text. This is
+This is some text. This is some text. This is some text. This is some text.
+text. This is some text. This is some text. This is some text. This is some
+some text. This is some text. This is some text. This is some text. This is
+This is some text. This is some text. This is some text. </p>
+</div>
+<h3>Title</h3>
+<div>
+<p>This is some text. This is some text. This is some text. This is
+This is some text. This is some text. This is some text. This is some text.
+text. This is some text. This is some text. This is some text. This is some
+some text. This is some text. This is some text. This is some text. This is
+This is some text. This is some text. This is some text. </p>
+</div><h3>Title</h3>
+<div>
+<p>This is some text. This is some text. This is some text. This is
+This is some text. This is some text. This is some text. This is some text.
+text. This is some text. This is some text. This is some text. This is some
+some text. This is some text. This is some text. This is some text. This is
+This is some text. This is some text. This is some text. </p>
+</div><h3>Title</h3>
+<div>
+<p>This is some text. This is some text. This is some text. This is
+This is some text. This is some text. This is some text. This is some text.
+text. This is some text. This is some text. This is some text. This is some
+some text. This is some text. This is some text. This is some text. This is
+This is some text. This is some text. This is some text. </p>
+</div><h3>Title</h3>
+<div>
+<p>This is some text. This is some text. This is some text. This is
+This is some text. This is some text. This is some text. This is some text.
+text. This is some text. This is some text. This is some text. This is some
+some text. This is some text. This is some text. This is some text. This is
+This is some text. This is some text. This is some text. </p>
+</div>
+</div>
+
+<hr><br>
+
+<ul>
+<li>Pizza</li>
+<li>Cheese</li>
+<li>Tomatoes</li>
+<li>Chocolate</li>
+</ul>
+
+
+<script>
+
+
+$("#square").draggable();
+$("#resizable").resizable();
+
+$("#target").droppable({
+drop: function(event , ui) { 
+/*
+drop → the event/function that runs when something is dropped onto a droppable element.
+ui → information about the element being dragged/dropped. In jQuery UI, you commonly access it with ui.draggable.
+event → information about the drop event itself, such as where/when it happened.
+*/
+    alert("dropped");
+    $("#target"). css("background-color","red");
+}});
+
+// 
+
+$("#accordion").accordion(); // list
+
+
+$("ul").sortable(); // gives you ability to sort elements
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Learning Javascript</title>
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<style>
+
+body{
+   font-family: Verdana, Geneva, Tahoma, sans-serif; 
+}
+#box {
+width:200px;
+height:200px;
+background-color:red;
+display: none;
+position: relative;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+<p>Your time: <span id="time">Not attempted yet</span>s</p>
+<div id="box"></div>
+
+<script>
+
+var clickedTime; var createdTime; var reactionTime;
+
+function getRandomColor() {
+var letters = '0123456789ABCDEF'.split("");
+var color = '#';
+for (var i = 0; i < 6; i++ ) {
+color += letters[Math. round(Math. random() * 15)];
+}
+return color;
+}
+
+
+function makeBox() { // after time in milliseconds anything inside the timeout execute
+var time=Math.random();
+time=time*5000; // So here it become 1-5 secons
+setTimeout(function() {
+
+var top=Math. random();
+top=top*300; // in pixels
+var left=Math. random();
+left=left*500;
+document.getElementById("box").style.top=top+"px";
+document.getElementById("box").style.left=left+"px";
+
+if (Math.random()>0.5) {
+document.getElementById("box").style.borderRadius="100px";
+} else {
+document.getElementById("box").style.borderRadius="0";
+}
+
+document.getElementById("box").style.display="block";
+document.getElementById("box").style.backgroundColor=getRandomColor();
+
+createdTime=Date.now(); //We put it last for the best optimiztion since 
+//We dont want have some time spen when loading from top to bottom
+//thats why its better fo it to be last
+}, time);
+}
+
+document.getElementById("box").onclick=function() {
+clickedTime=Date.now();
+reactionTime=(clickedTime-createdTime)/1000; //to get in seconds instead of milli
+
+document.getElementById("time").innerHTML=reactionTime;
+
+this.style.display="none";  //can put this instead of whole document if you are inside a function
+makeBox();
+}
+makeBox();
+
+// alert(Date.now()); when alone(default) shows time in seconds since 1970 , called timestamp
+
+
+</script>
+
+</body>
+</html>

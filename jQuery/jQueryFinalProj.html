@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Code Player</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" ></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js"></script>    
+
+
+</head>
+<style>
+body {
+margin:0;
+padding: 0;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", Helvetica, "Lucida Grande", sans-serif;
+font-weight: 300;
+}
+
+#menuBar {
+width: 100%;
+height:40px;
+background-color:#e0e0e0;
+border-bottom:1px solid grey;
+}
+
+#logo {
+    padding:5px 0 0 20px;
+    font-weight: bold;
+    font-size: 120%;
+    float:left;
+}
+
+#buttonDiv {
+float: right;
+padding:5px 10px 0 0;
+}
+#runButton {
+font-size:120%;
+}
+
+#toggles {
+width: 200px;
+margin:0 auto;
+list-style:none; /*Remove the points(.) next to each li element*/
+border:1px solid grey;
+border-radius:3px;
+height:27px;
+padding: 0;
+position: relative;
+top: 5px;
+}
+
+#toggles li {
+float: left;
+border-right:1px solid grey;
+padding:5px 7px;
+/* Toggles are clickable, so show a pointer cursor to make that obvious to the user */
+cursor:pointer;
+}
+
+.clear {
+    clear: both;
+}
+
+.codeContainer {
+height:100%;
+width: 50%;
+float: left;
+position: relative;
+}
+
+.codeContainer textarea {
+width: 100%;
+height:100%;
+border:none;
+border-right:1px solid grey;
+font-family: monospace;
+font-size: 90%;
+padding:5px;
+box-sizing: border-box;
+}
+
+.codeLabel {
+position:absolute;
+right: 10px;
+top:10px;
+}
+#CSSContainer, #JSContainer {
+display:none;
+}
+
+iframe {
+height:100%;
+width:100%;
+/* Removed "left:20px" */
+position:relative;
+border:none;
+box-sizing:border-box;
+}
+
+.selected {
+background-color:grey;
+}
+</style>
+
+<body>
+
+
+<div id="wrapper">
+
+<div id="menuBar">
+
+<div id="logo">CodePlayer</div>
+
+
+<div id="buttonDiv">
+<button id="runButton">Run</button>
+</div>
+
+<ul id="toggles">
+
+<li class="toggle selected">HTML</li> <!--Selected by default-->
+<li class="toggle">CSS</li>
+<li class="toggle">JS</li>
+<li class="toggle selected" style="border: none;">Result</li> <!--It had a redundant extra line so we remove from this element only-->
+
+</ul>
+
+</div>
+
+<div class="clear"></div> <!--Always clean div when there is a float-->
+
+<div class="codeContainer" id="HTMLContainer">
+
+<div class="codeLabel">HTML</div>
+<textarea id="htmlCode"></textarea>
+
+</div>
+
+<div class="codeContainer" id="CSSContainer">
+<div class="codeLabel">CSS</div>
+<textarea id="cssCode">html {background-color:blue}</textarea>
+
+</div>
+
+<div class="codeContainer" id="JSContainer">
+<div class="codeLabel">JS</div>
+<textarea id="jsCode">alert('done')</textarea>
+
+</div>
+
+<div class="codeContainer" id="ResultContainer">
+<div class="codeLabel">Result</div>
+<iframe></iframe>
+
+</div>
+
+
+<script>
+
+// ----- Initial sizing -----
+// Measure the browser window and the menu bar once on load so we know how
+// much vertical space is left for the code panels to fill.
+var windowHeight=$(window).height();
+var menuBarHeight=$("#menuBar").height();
+var codeContainerHeight=windowHeight-menuBarHeight;
+
+$(".codeContainer").height(codeContainerHeight+"px");
+
+// keep the panels correctly sized if the user resizes the browser
+// window (the original code only calculated this once, on page load).
+$(window).resize(function() {
+    windowHeight = $(window).height();
+    menuBarHeight = $("#menuBar").height();
+    codeContainerHeight = windowHeight - menuBarHeight;
+    $(".codeContainer").height(codeContainerHeight + "px");
+});
+
+// toggle buttons (HTML / CSS / JS / Result)
+// Clicking a toggle shows/hides its matching panel and re-distributes
+// the available width evenly between whichever panels are visible.
+$(".toggle").click(function() {
+    $(this).toggleClass("selected");
+    var activeDiv=$(this).html();
+    $("#"+activeDiv+"Container").toggle(); //Naming is important in html
+
+    var showingDivs=$(".codeContainer").filter(function() { //filter() is an array 
+        //method that creates a new array containing only the elements that pass a test.
+        return($(this).css("display") != "none");
+    }).length;
+
+    var width=100/showingDivs;
+    $(".codeContainer").css("width", width+"%");
+});
+
+// ----- Run button -----
+// builds a full HTML document out of the HTML/CSS/JS textareas and
+// injects it into the result iframe, so the user can preview their code.
+$("#runButton").click(function() {
+
+    // Grab the current contents of each editor pane.
+    var htmlCode = $("#htmlCode").val();
+    var cssCode = $("#cssCode").val();
+    var jsCode = $("#jsCode").val();
+
+    var resultDoc = '<html><head><style>' + cssCode + '</style></head><body>'
+        + htmlCode
+        + '<script>' + jsCode + '<\/script>'
+        + '</body></html>';
+
+    // Write the combined document into the iframe. Using .contents().find("html").html(...)
+    // like the original does can behave unexpectedly once a <head> is involved,
+    // so instead we access the iframe's document directly and use
+    // document.open/write/close, which is the standard, reliable way to replace
+    // an iframe's entire content (including running any <script> tags inside it).
+    var iframeDoc = $("iframe")[0].contentWindow.document;
+    iframeDoc.open();
+    iframeDoc.write(resultDoc);
+    iframeDoc.close();
+});
+
+</script>
+
+</div> <!-- closes #wrapper-->
+
+</body>
+</html>

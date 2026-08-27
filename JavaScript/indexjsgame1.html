@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Learning Javascript Part2 Game</title>
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+</head>
+
+<body>
+
+<p>How many fingers am I holding up ?</p>
+<input id="answer" />
+<button id="myButton">Submit</button>
+
+
+
+
+<script>
+
+document.getElementById("myButton").onclick=function() { //user input
+
+var x=Math.random(); // chose a number between 0-1 
+x=6*x; // multiply by 6 
+x=Math.floor(x); // reduce number to biggest integar 
+// after all that we are left with choices from 1 to 5
+
+if (x == document.getElementById("answer").value) {
+alert("That's correct!");
+
+} else {
+alert("That's wrong! My number was "+x);
+}
+}
+
+</script>
+
+</body>
+</html>
