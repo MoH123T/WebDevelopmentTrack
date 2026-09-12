@@ -1,0 +1,6 @@
+{
+  "name": "myappfirst/email-sender",
+  "description": "A small SMTP contact form using PHPMailer",
+  "require": { "php": "^8.1", "phpmailer/phpmailer": "^6.9",
+    "vlucas/phpdotenv": "^5.7" }
+}

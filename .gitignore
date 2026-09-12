@@ -1,14 +1,13 @@
 git add .
 
-Bootstrap5/
-
-Wordpress6/
-
-Php7/
-
-Mysql8/
+Wordpress/
 
 Learning/
 
 images/Roblox_don_25.png
-images/Top9RLB.jpg
+
+.vscode/
+
+node_modules/
+
+vendor

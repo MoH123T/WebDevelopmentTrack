@@ -1,0 +1,18 @@
+node_modules/
+.git/
+images/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.svg
+*** Add File: C:\laragon\www\myappfirst\.vscode\extensions.json
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ecmel.vscode-html-css",
+    "xdebug.php-debug"
+  ]
+}

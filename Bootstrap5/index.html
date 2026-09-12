@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+  <!--bs : used too much in classes : means bootstrap-->
+  <!--To use bootstrap you must import its libraies (has a css and a javascript)-->
+  <!--Bootstrap is responsive (meaning that it fits on all different devices)-->
+  <head>
+    <title>Bootstrap 5 Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Latest compiled and minified CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!--Fontawesome link-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    />
+    <!--
+ Latest compiled JavaScript
+ defer : download js script now but dont execute until html has been parsed
+  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .box {
+        background-color: rgb(23, 167, 45);
+      }
+
+      .box img {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+      }
+
+      .clear {
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>BootStrap Learning</header>
+
+      <h1>My First Bootstrap Page</h1>
+      <p>This part is inside a .container class .</p>
+      <p>The .container class provides a responsive fixed width container .</p>
+
+      <hr />
+      <!--
+Grid :-
+Slicing or seperating the screen into parts(Good because it fits on different devices)(Resposive design)
+Seperate parts horizontal (on x asix) use class="col"
+To seperate parts onto (vertical and horizontal)(x and y) we need to use breakpoints
+breakspoints are like different size tiers
+We use it with div
+
+Bootstrap grid is based on a 12-column system The important idea is:
+col = automatically share the available space / divids equally between all nomral col
+col-4 = take 4 out of 12 columns = 33.33% -> 4/12
+
+Stacked to horizontal helps with moving parts that were on the same row into under each other when 
+we change the screen sizing
+-->
+      <h2>Grid Section:</h2>
+      <div class="row">
+        <div class="col box">col</div>
+        <div class="col box">col</div>
+        <div class="col box">col</div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="col-sm-4 box">col</div>
+        <div class="col-sm-4 box">col</div>
+        <div class="col-sm-4 box">col</div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="col box">col(auto)</div>
+        <div class="col-4 box">col(4)</div>
+      </div>
+
+      <br />
+      <div class="row">
+        <div class="col-sm-4 box" style="background-color: gray">
+          <img src="https://i.imgur.com/PPS4Qxa.jpeg" />
+        </div>
+        <div class="col-sm-4 box" style="background-color: gray">
+          <img src="https://i.imgur.com/PPS4Qxa.jpeg" />
+        </div>
+        <div class="col-sm-4 box" style="background-color: gray">
+          <img src="https://i.imgur.com/PPS4Qxa.jpeg" />
+        </div>
+      </div>
+      <!--Can view how reponsive the design by pressing inspect and toggling on 
+the device tool emulation and changing dimensions to whichever device-->
+      <br />
+    </div>
+
+    <!--Nav Section-->
+    <!--
+Containter-fluid take the whole page width
+normal containter like previous doesnt take the full width
+-->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4 box" style="background-color: gray">
+          <img src="https://i.imgur.com/PPS4Qxa.jpeg" />
+        </div>
+        <div class="col-sm-4 box" style="background-color: gray">
+          <img src="https://i.imgur.com/PPS4Qxa.jpeg" />
+        </div>
+        <div class="col-sm-4 box" style="background-color: gray">
+          <img src="https://i.imgur.com/PPS4Qxa.jpeg" />
+        </div>
+      </div>
+    </div>
+
+    <hr />
+    <br />
+
+    <h2>NavBars Section:</h2>
+    <!--Navbars are used to make menus, good for footer,header-->
+
+    <!--
+navbar → Bootstrap class that gives the element Bootstrap navbar styling/layout
+navbar-expand-lg → Navbar is collapsed on small screens and expands normally at large (lg) screens and above
+navbar-dark → Tells Bootstrap to use a light-colored text/icon scheme suitable for a dark background
+bg-dark → Gives the navbar a dark background
+--
+navbar-brand → Bootstrap styling for the brand/logo/name of the website
+href="#" → Where the link goes, # points to the current page/top for this example
+--
+navbar-toggler → Bootstrap styling for the responsive navbar button
+
+data-bs-toggle="collapse" Tells Bootstraps JavaScript: This button controls a collapsible element
+
+data-bs-target="#mainmenu" Tells Bootstrap which element to collapse/expand
+The # means its looking for an element with: id="mainmenu"
+
+aria-controls="mainmenu"Accessibility information telling screen readers:
+"This button controls the element called mainmenu"
+
+aria-expanded="false"Tells assistive technologies that the menu is currently closed
+Bootstrap changes this when the menu opens
+
+aria-label="Toggle Nav" Provides an accessible name for the button, essentially:
+"This button toggles the navigation"
+
+navbar-toggler-icon Creates the hamburger icon inside the button(3 lines)
+navbar-toggler-icon is Bootstrap predefined icon styling
+
+--
+<div class="collapse navbar-collapse" id="mainmenu">
+
+This is the menu that gets collapsed/expanded
+collapse → Makes this section collapsible
+navbar-collapse → Applies navbar-specific collapse behavior/layout
+id="mainmenu" → Gives it the ID that the button's data-bs-target="#mainmenu" refers to
+
+navbar-nav Groups the actual navigation links
+navbar-nav → Bootstrap styling for a collection of navbar links
+
+nav-link → Bootstrap styling for navbar links
+-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <!--Make sure navbar isnt wrapped in a container to get its full width-->
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Greenbackend</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainmenu"
+          aria-controls="mainmenu"
+          aria-expanded="false"
+          aria-label="Toggle Nav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainmenu">
+          <!--!!!-->
+
+          <!--d-flex → Bootstrap class that sets display: flex
+flex-row → tells Flexbox to arrange the children horizontally (left → right)
+m = margin
+s = start (left in left-to-right layouts)
+5 = Bootstrap spacing level
+-->
+          <div class="navbar-nav d-flex flex-row">
+            <!--d-flex flex-row = puts the two groups beside each other(treated as groups
+not elements)-->
+            <div>
+              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#">Blog</a>
+            </div>
+
+            <div style="margin-left: 160px">
+              <a class="nav-link" href="#">Home2</a>
+              <a class="nav-link" href="#">About2</a>
+              <a class="nav-link" href="#">Blog2</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!--Conclusion : Bootstrap is filled with predefined classes and components
+its css/javascript library(framework) its with javascript since some componenets
+need javascript to work-->
+
+    <!--FormsAndTables : one of ways to get information by users-->
+    <hr />
+    <h2>Forms And Tables</h2>
+
+    <!--
+shadow → adds a box shadow around the form
+mt-5 → adds margin-top, mt = margin top, and 5 is a relatively large Bootstrap spacing value
+p-5 → adds padding on all sides, p = padding, 5 = relatively large spacing
+-->
+
+    <!--t:top b:bottm s:start(from left) e:end-->
+    <div class="container">
+      <form class="shadow mt-5 p-5">
+        <div class="mb-3">
+          <label class="form-label" for="email">Email</label>
+          <input id="email" class="form-control" type="email" placeholder="Enter your email" />
+          <div class="form-text">We need your email address</div>
+          <!--form text,can have tips to help the user-->
+        </div>
+
+        <div class="mb-3" style="opacity: 70%">
+          <label for="email">Email(No bootstrap)</label>
+          <input id="email" type="email" placeholder="Enter your email" />
+          <div>We need your email address</div>
+          <!--form text,can have tips to help the user-->
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="password">Password</label>
+          <input
+            id="password"
+            class="form-control"
+            type="password"
+            placeholder="Enter your password"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-check-label" for="rememberme">Remember Me</label>
+          <input id="rememberme" class="form-check-input" type="checkbox" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+      <div class="table-responsive">
+        <table class="mt-5 table table-striped table-bordered">
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Country</th>
+          </tr>
+          <tr>
+            <td>Ahmad</td>
+            <td>33</td>
+            <td>Palestine</td>
+          </tr>
+          <tr>
+            <td>Sami</td>
+            <td>23</td>
+            <td>Saudi Arabia</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <hr />
+    <!--
+Components and Fontawesome
+Components are additional features that add extra ui/ux to make
+a better front, used here to add some new extra features to 
+the forms
+
+fontawesome : is a website(include it using its link in the head)
+that has icons that can be used for better front
+-->
+    <h2>Components and Fontawesome</h2>
+
+    <div class="container">
+      <form class="shadow mt-5 p-5">
+        <div class="mb-3">
+          <label class="form-label" for="email">Email</label>
+          <input id="email" class="form-control" type="email" placeholder="Enter your email" />
+          <div class="form-text">We need your email address</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="password">Password</label>
+          <input
+            id="password"
+            class="form-control"
+            type="password"
+            placeholder="Enter your password"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-check-label" for="rememberme">Remember Me</label>
+          <input id="rememberme" class="form-check-input" type="checkbox" />
+        </div>
+        <!-- Spinner component:
+          to help seeing loading-->
+        <div class="d-flex justify-content-center p-5 mb-5 shadow">
+          <div class="spinner-border"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary"><i class="fas fa-key"></i> Login</button>
+        <!--Badge compnent : added to buttons
+        -->
+        <button class="btn btn-dark position-relative">
+          Test
+          <!--badge added here-->
+          <span class="position-absolute bottom-50 start-10 badge bg-danger rounded-pill">
+            99+
+          </span>
+        </button>
+      </form>
+
+      <div class="table-responsive">
+        <table class="mt-5 table table-striped table-bordered">
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Country</th>
+          </tr>
+          <tr>
+            <td>Ahmad <i class="fas fa-laptop-code"></i></td>
+            <td>33</td>
+            <td>Palestine</td>
+          </tr>
+          <tr>
+            <td>Sami</td>
+            <td>23</td>
+            <td>Saudi Arabia</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <hr />
+    <!--
+    =
+    =
+    =
+    =
+   JavaScript Components 
+Modal: Used when you need the user to stop and interact with something before continuing.
+→ Example: Confirming deletion: “Are you sure you want to delete this?”
+Toast: Used for quick, temporary notifications that don't require interaction.
+→ Example: “File saved successfully!”
+Popover: A small floating box with extra information/
+options that appears when you click or hover an element.
+→ Example: Clicking a user's profile icon shows their name, email, and account options.
+Tooltip: A tiny popup that gives short explanatory text when you hover over or focus on an element.
+→ Example: Hover over an icon → “Password must be at least 8 characters.”
+
+Modal = demands attention/action
+Toast = temporary notification
+Popover = extra info/options
+Tooltip = brief explanation of an element
+    -->
+    <h2>JavaScript Components</h2>
+    <div class="container">
+      <h5>Toast and Modal</h5>
+
+      <button type="button" class="btn btn-primary" id="liveToastBtn">Show Toast</button>
+      <!--Toast location-->
+      <div class="position-fixed bottom-0 end-0 p-3 border-0" style="z-index: 11">
+        <!--Toast-->
+        <div class="toast" id="liveToast" role="alert" aria-live="assertive" aria-atomic="true">
+          <!--toast header-->
+          <div class="toast-header">
+            <img
+              width="32px"
+              src="https://hub.anbilarabi.com/assets/favicon-zihoc7l1.png"
+              class="rounded me-2"
+            />
+            <strong class="me-auto">This is simple toast</strong>
+            <!--we can make it dynamic-->
+            <small>10 mins ago</small>
+
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="toast-body">Hello, this is simple toast testing</div>
+        </div>
+      </div>
+      <!--
+      Modal : similar to toast but has some 
+      differences in classes
+      -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        id="liveModal"
+        data-bs-toggle="modal"
+        data-bs-target="#liveModalExample"
+      >
+        Show Modal
+      </button>
+
+      <div
+        class="modal fade"
+        id="liveModalExample"
+        role="modal"
+        tabindex="-1"
+        aria-labelledby="liveModalExample"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">
+                <img
+                  width="32px"
+                  src="https://hub.anbilarabi.com/assets/favicon-zihoc7l1.png"
+                  class="rounded me-2"
+                />
+                <strong class="me-auto">This is simple modal testing</strong>
+                <small>10 mins ago</small>
+              </h5>
+
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="modal-body">Hello, this is simple modal by AhmadNaser.com</div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">Nothing</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h5>Popover in a modal</h5>
+      <p>
+        This
+        <a
+          href="#"
+          role="button"
+          data-bs-toggle="popover"
+          class="btn btn-secondary popover-test"
+          title="Popover title"
+          data-bs-content="Popover body content is set in this attribute."
+          >button</a
+        >
+        triggers a popover on click.
+      </p>
+
+      <h5>Tooltips in a modal</h5>
+      <p>
+        <a href="#" data-bs-toggle="tooltip" class="tooltip-test" title="Tooltip 1">This link</a>
+        and
+        <a
+          href="#"
+          data-bs-toggle="tooltip"
+          class="tooltip-test"
+          data-bs-html="true"
+          title="<em>Tooltip</em> <u>with</u> <b>HTML</b>"
+          >that link</a
+        >
+        have tooltips on hover.
+      </p>
+    </div>
+
+    <hr />
+    <!--
+Cards And Placeholders
+card : containers used to group related content
+ together in a neat, structured box (and reusable)
+ card :
+ image(top)
+ body(title
+ text)
+ footer
+
+ Common uses:
+Product/item displays
+User profiles
+Blog/news posts
+Information panels
+
+placeholder : The placeholder classes 
+are making the content look like it is loading.
+
+info : https://via.placeholder.com/ is no longer up
+so i used placehold.co
+-->
+    <h2>Cards And Placeholders</h2>
+
+    <div class="container">
+      <div class="card-columns">
+        <div class="card">
+          <img class="card-img-top" src="https://placehold.co/300" />
+          <div class="card-body">
+            <div class="card-title placeholder-glow">
+              <span class="placeholder col-6"></span>
+            </div>
+            <div class="card-text placeholder-glow">
+              <span class="placeholder bg-info col-12"></span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted placeholder"></small>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card-img-top" src="https://placehold.co/200" />
+          <div class="card-body">
+            <div class="card-title placeholder-glow">
+              <span class="placeholder col-6"></span>
+            </div>
+            <div class="card-text placeholder-glow">
+              <span class="placeholder bg-info col-12"></span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted placeholder"></small>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="https://placehold.co/100" />
+          <div class="card-body">
+            <div class="card-title placeholder-glow">
+              <span class="placeholder col-6"></span>
+            </div>
+            <div class="card-text placeholder-glow">
+              <span class="placeholder bg-info col-12"></span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted placeholder"></small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--
+    with d-flex
+    -->
+    <div class="container">
+      <div class="card-columns d-flex">
+        <div class="card">
+          <img class="card-img-top" src="https://placehold.co/300" />
+          <div class="card-body">
+            <div class="card-title placeholder-glow">
+              <span class="placeholder col-6"></span>
+            </div>
+            <div class="card-text placeholder-glow">
+              <span class="placeholder bg-info col-12"></span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted placeholder"></small>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card-img-top" src="https://placehold.co/200" />
+          <div class="card-body">
+            <div class="card-title placeholder-glow">
+              <span class="placeholder col-6"></span>
+            </div>
+            <div class="card-text placeholder-glow">
+              <span class="placeholder bg-info col-12"></span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted placeholder"></small>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="https://placehold.co/100" />
+          <div class="card-body">
+            <div class="card-title placeholder-glow">
+              <span class="placeholder col-6"></span>
+            </div>
+            <div class="card-text placeholder-glow">
+              <span class="placeholder bg-info col-12"></span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted placeholder"></small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+    <!--
+    -->
+    <h2></h2>
+
+    <!--Start of scripts-->
+    <script>
+      let toastBtn = document.getElementById('liveToastBtn');
+      let toastExample = document.getElementById('liveToast');
+      if (toastBtn) {
+        toastBtn.addEventListener('click', function () {
+          let toast = new bootstrap.Toast(toastExample);
+          toast.show();
+        });
+      }
+    </script>
+
+    <script>
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]'),
+      );
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl);
+      });
+
+      var tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]'),
+      );
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    </script>
+  </body>
+</html>
